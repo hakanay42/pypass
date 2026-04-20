@@ -1,328 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PyPass - Course Project 1</title>
+  <title>PyPass - My Course Project</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
       color: #333;
+      background: #fff;
     }
 
-    header {
-      background: #1a1a2e;
-      color: white;
-      padding: 50px 20px;
-      text-align: center;
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #2c3e50;
+      padding-bottom: 10px;
     }
 
-    header h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
+    h2 {
+      color: #2c3e50;
+      margin-top: 30px;
     }
 
-    header p {
-      font-size: 1.1em;
-      color: #aaa;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #16213e;
-      border: 1px solid #0f3460;
-      color: #e94560;
-      padding: 5px 15px;
-      border-radius: 20px;
-      font-size: 0.85em;
-      margin-top: 15px;
-    }
-
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    .section {
-      background: white;
-      border-radius: 10px;
-      padding: 30px;
-      margin-bottom: 25px;
-      border-left: 4px solid #e94560;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-
-    .section h2 {
-      font-size: 1.3em;
-      margin-bottom: 15px;
-      color: #1a1a2e;
-    }
-
-    .section p {
-      line-height: 1.7;
-      color: #555;
-      margin-bottom: 10px;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-top: 10px;
-    }
-
-    .info-box {
-      background: #f9f9f9;
-      border-radius: 8px;
-      padding: 15px 20px;
-    }
-
-    .info-box .label {
-      font-size: 0.8em;
-      color: #999;
-      margin-bottom: 4px;
-    }
-
-    .info-box .value {
-      font-weight: 600;
-      color: #1a1a2e;
-    }
-
-    .tech-list {
-      list-style: none;
-      margin-top: 10px;
-    }
-
-    .tech-list li {
-      padding: 10px 0;
-      border-bottom: 1px solid #f0f0f0;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      color: #555;
-      line-height: 1.5;
-    }
-
-    .tech-list li:last-child {
-      border-bottom: none;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      background: #e94560;
-      border-radius: 50%;
-      margin-top: 7px;
-      flex-shrink: 0;
-    }
-
-    .steps {
-      counter-reset: step;
-      list-style: none;
-      margin-top: 10px;
-    }
-
-    .steps li {
-      counter-increment: step;
-      padding: 12px 0 12px 50px;
-      border-bottom: 1px solid #f0f0f0;
-      position: relative;
-      color: #555;
+    p {
       line-height: 1.6;
     }
 
-    .steps li:last-child { border-bottom: none; }
+    ul {
+      line-height: 2;
+    }
 
-    .steps li::before {
-      content: counter(step);
-      position: absolute;
-      left: 0;
-      top: 10px;
-      width: 30px;
-      height: 30px;
-      background: #e94560;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85em;
+    .info-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    .info-table td {
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+    }
+
+    .info-table td:first-child {
+      background: #f5f5f5;
       font-weight: bold;
+      width: 180px;
     }
 
-    code {
-      background: #1a1a2e;
-      color: #e94560;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.9em;
-      font-family: monospace;
-    }
-
-    .code-block {
-      background: #1a1a2e;
-      color: #a8ff78;
-      padding: 20px;
-      border-radius: 8px;
-      font-family: monospace;
-      font-size: 0.9em;
-      line-height: 1.8;
-      margin-top: 15px;
-      overflow-x: auto;
-    }
-
-    .status-bar {
-      background: #1a1a2e;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 25px;
-    }
-
-    .status-bar span {
-      color: #a8ff78;
-      font-weight: bold;
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border-left: 3px solid #2c3e50;
+      font-size: 14px;
     }
 
     footer {
-      text-align: center;
-      padding: 30px;
+      margin-top: 60px;
       color: #999;
-      font-size: 0.9em;
+      font-size: 13px;
+      border-top: 1px solid #eee;
+      padding-top: 15px;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>🔐 PyPass</h1>
-  <p>Local-First Password Manager using AES-256 Encryption</p>
-  <div class="badge">Course Project 1 — Prototype</div>
-</header>
+  <h1>🔐 PyPass - Password Manager</h1>
+  <p>This is my Course Project 1 for Information Systems. I made a simple password manager that works completely offline and uses AES-256 encryption to protect passwords.</p>
 
-<div class="container">
+  <h2>Project Info</h2>
+  <table class="info-table">
+    <tr><td>Student</td><td>Hakan Ay</td></tr>
+    <tr><td>Student ID</td><td>4250</td></tr>
+    <tr><td>Program</td><td>Information Systems</td></tr>
+    <tr><td>University</td><td>ISMA University</td></tr>
+    <tr><td>Stage</td><td>Prototype</td></tr>
+  </table>
 
-  <div class="status-bar">
-    Prototype status: <span>Working</span> &nbsp;|&nbsp;
-    Encryption: <span>AES-256-CBC</span> &nbsp;|&nbsp;
-    Key Derivation: <span>PBKDF2-SHA256</span>
-  </div>
+  <h2>What is the problem?</h2>
+  <p>People have many passwords and most use cloud-based managers like LastPass. The problem is that your passwords are stored on someone else's server. If that server gets hacked, your passwords are exposed. My project keeps everything on your own computer, encrypted.</p>
 
-  <!-- About -->
-  <div class="section">
-    <h2>About the Project</h2>
-    <p>
-      PyPass is a command-line password manager that stores all passwords locally on your own computer,
-      fully encrypted. There is no cloud, no server, and no third party involved.
-      Even if someone gets access to the vault file, they cannot read anything without the master password.
-    </p>
-    <p>
-      The main idea came from a simple observation: most people use cloud-based password managers,
-      which means their passwords are stored on someone else's server. PyPass solves this by keeping
-      everything offline and encrypted on the user's own machine.
-    </p>
-  </div>
+  <h2>Research Question</h2>
+  <p>How can AES-256 encryption and PBKDF2 key derivation be used to protect a local password database, and what are the security benefits of keeping data offline?</p>
 
-  <!-- Project Info -->
-  <div class="section">
-    <h2>Project Information</h2>
-    <div class="info-grid">
-      <div class="info-box">
-        <div class="label">Student</div>
-        <div class="value">Hakan Ay</div>
-      </div>
-      <div class="info-box">
-        <div class="label">Student ID</div>
-        <div class="value">4250</div>
-      </div>
-      <div class="info-box">
-        <div class="label">Study Program</div>
-        <div class="value">Information Systems</div>
-      </div>
-      <div class="info-box">
-        <div class="label">University</div>
-        <div class="value">Riga Nordic University</div>
-      </div>
-      <div class="info-box">
-        <div class="label">Course</div>
-        <div class="value">Information Systems Project</div>
-      </div>
-      <div class="info-box">
-        <div class="label">Stage</div>
-        <div class="value">Prototype</div>
-      </div>
-    </div>
-  </div>
+  <h2>How it works</h2>
+  <ul>
+    <li>User creates a master password on first run</li>
+    <li>The master password is used to generate an AES-256 encryption key using PBKDF2</li>
+    <li>All passwords are encrypted and saved in a local file</li>
+    <li>Without the master password, the file cannot be decrypted</li>
+  </ul>
 
-  <!-- Research Question -->
-  <div class="section">
-    <h2>Research Question</h2>
-    <p>
-      How can AES-256 encryption and PBKDF2 key derivation be used to protect a local password database,
-      and what are the main security benefits of keeping this data offline?
-    </p>
-  </div>
+  <h2>Encryption details</h2>
+  <ul>
+    <li><b>AES-256-CBC</b> - for encrypting the passwords</li>
+    <li><b>PBKDF2-HMAC-SHA256</b> - to create the key from master password (310,000 iterations)</li>
+    <li><b>Random salt</b> - so the same password gives a different key each time</li>
+    <li><b>HMAC</b> - to detect if the file was changed or corrupted</li>
+  </ul>
 
-  <!-- How it works -->
-  <div class="section">
-    <h2>How It Works</h2>
-    <ol class="steps">
-      <li>User sets a <strong>master password</strong> on first run. This password is never stored anywhere.</li>
-      <li>A random <strong>32-byte salt</strong> is generated and saved in the vault file.</li>
-      <li>The master password + salt go through <strong>PBKDF2-HMAC-SHA256</strong> (310,000 iterations) to produce an AES-256 key.</li>
-      <li>Each password entry is encrypted with <strong>AES-256-CBC</strong> using a random IV.</li>
-      <li>An <strong>HMAC-SHA256</strong> is added to detect any tampering with the vault file.</li>
-      <li>Everything is saved locally as a JSON file. No internet connection needed.</li>
-    </ol>
-  </div>
+  <h2>How to run</h2>
+  <pre>
+pip install cryptography
+python pypass.py
+  </pre>
 
-  <!-- Security -->
-  <div class="section">
-    <h2>Security Features</h2>
-    <ul class="tech-list">
-      <li><span class="dot"></span><strong>AES-256-CBC</strong> — industry standard symmetric encryption. The same algorithm used by banks and governments.</li>
-      <li><span class="dot"></span><strong>PBKDF2-HMAC-SHA256</strong> — key stretching with 310,000 iterations makes brute force attacks extremely slow.</li>
-      <li><span class="dot"></span><strong>Random salt</strong> — a unique 32-byte salt means the same master password produces a different key every time.</li>
-      <li><span class="dot"></span><strong>Random IV</strong> — a new 16-byte IV for every encryption means the same password encrypts differently each time.</li>
-      <li><span class="dot"></span><strong>HMAC-SHA256</strong> — integrity check detects if the vault file was modified or corrupted.</li>
-      <li><span class="dot"></span><strong>Local only</strong> — no cloud, no network, no third party. Data never leaves the user's computer.</li>
-    </ul>
-  </div>
+  <h2>What the prototype can do</h2>
+  <ul>
+    <li>Create a new encrypted vault with a master password</li>
+    <li>Add a password for a service</li>
+    <li>View a saved password</li>
+    <li>List all saved services</li>
+  </ul>
 
-  <!-- How to run -->
-  <div class="section">
-    <h2>How to Run</h2>
-    <div class="code-block">
-      # Step 1 - install the required library<br>
-      pip install cryptography<br><br>
-      # Step 2 - run the program<br>
-      python pypass.py<br><br>
-      # Step 3 - choose a master password on first run<br>
-      # Then add, view, or list your passwords
-    </div>
-  </div>
+  <h2>What the final version will have</h2>
+  <ul>
+    <li>Delete passwords</li>
+    <li>Generate random strong passwords</li>
+    <li>Change master password</li>
+  </ul>
 
-  <!-- Prototype vs Final -->
-  <div class="section">
-    <h2>Prototype vs Final Version</h2>
-    <ul class="tech-list">
-      <li><span class="dot"></span><strong>Prototype (current):</strong> Core encryption engine working. Add, view, and list passwords. Proves the main concept.</li>
-      <li><span class="dot"></span><strong>Final version (planned):</strong> Delete passwords, random password generator, change master password, better interface.</li>
-    </ul>
-  </div>
+  <h2>GitHub Repository</h2>
+  <p><a href="https://github.com/hakanay42/pypass">https://github.com/hakanay42/pypass</a></p>
 
-</div>
-
-<footer>
-  Hakan Ay — Course Project 1 — Information Systems — ISMA University 2025
-  &nbsp;|&nbsp;
-  <a href="https://github.com/hakanay42/pypass" style="color: #e94560;">GitHub Repository</a>
-</footer>
+  <footer>
+    Hakan Ay | Student ID: 4250 | Information Systems | ISMA University | 2025
+  </footer>
 
 </body>
 </html>
