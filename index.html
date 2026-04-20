@@ -9,7 +9,6 @@
       margin: 40px auto;
       padding: 0 20px;
       color: #333;
-      background: #fff;
     }
 
     h1 {
@@ -23,63 +22,61 @@
       margin-top: 30px;
     }
 
-    p {
-      line-height: 1.6;
+    p, ul {
+      line-height: 1.7;
     }
 
-    ul {
-      line-height: 2;
-    }
-
-    .info-table {
+    table {
       border-collapse: collapse;
       width: 100%;
-      margin: 20px 0;
+      margin: 15px 0;
     }
 
-    .info-table td {
+    table td {
       border: 1px solid #ddd;
       padding: 8px 12px;
     }
 
-    .info-table td:first-child {
+    table td:first-child {
       background: #f5f5f5;
       font-weight: bold;
-      width: 180px;
+      width: 160px;
     }
 
     pre {
       background: #f4f4f4;
       padding: 15px;
-      border-left: 3px solid #2c3e50;
+      border-left: 3px solid #555;
       font-size: 14px;
     }
 
+    a { color: #2c3e50; }
+
     footer {
-      margin-top: 60px;
+      margin-top: 50px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
       color: #999;
       font-size: 13px;
-      border-top: 1px solid #eee;
-      padding-top: 15px;
     }
   </style>
 </head>
 <body>
 
-  <h1>🔐 PyPass - Password Manager</h1>
-  <p>This is my Course Project 1 for Information Systems. I made a simple password manager that works completely offline and uses AES-256 encryption to protect passwords.</p>
+  <h1>PyPass - Password Manager</h1>
+  <p>This is my Course Project 1 for Information Systems. I built a simple password manager that works completely offline and uses AES-256 encryption to keep passwords safe.</p>
 
   <h2>Project Info</h2>
-  <table class="info-table">
+  <table>
     <tr><td>Student</td><td>Hakan Ay</td></tr>
     <tr><td>Student ID</td><td>4250</td></tr>
     <tr><td>Program</td><td>Information Systems</td></tr>
-    <tr><td>University</td><td>ISMA University</td></tr>
+    <tr><td>University</td><td>Riga Nordic University</td></tr>
     <tr><td>Stage</td><td>Prototype</td></tr>
   </table>
 
   <h2>What is the problem?</h2>
-  <p>People have many passwords and most use cloud-based managers like LastPass. The problem is that your passwords are stored on someone else's server. If that server gets hacked, your passwords are exposed. My project keeps everything on your own computer, encrypted.</p>
+  <p>Most people use cloud-based password managers. The problem is your passwords are stored on someone else's server. If that server gets hacked, your passwords are exposed. My project stores everything locally on your own computer, fully encrypted.</p>
 
   <h2>Research Question</h2>
   <p>How can AES-256 encryption and PBKDF2 key derivation be used to protect a local password database, and what are the security benefits of keeping data offline?</p>
@@ -87,26 +84,24 @@
   <h2>How it works</h2>
   <ul>
     <li>User creates a master password on first run</li>
-    <li>The master password is used to generate an AES-256 encryption key using PBKDF2</li>
+    <li>The master password is used to generate an AES-256 key using PBKDF2</li>
     <li>All passwords are encrypted and saved in a local file</li>
-    <li>Without the master password, the file cannot be decrypted</li>
+    <li>Without the master password, the file cannot be read</li>
   </ul>
 
-  <h2>Encryption details</h2>
+  <h2>Encryption used</h2>
   <ul>
-    <li><b>AES-256-CBC</b> - for encrypting the passwords</li>
-    <li><b>PBKDF2-HMAC-SHA256</b> - to create the key from master password (310,000 iterations)</li>
-    <li><b>Random salt</b> - so the same password gives a different key each time</li>
-    <li><b>HMAC</b> - to detect if the file was changed or corrupted</li>
+    <li><b>AES-256-CBC</b> - encrypts the passwords</li>
+    <li><b>PBKDF2-HMAC-SHA256</b> - creates the key from master password (310,000 iterations)</li>
+    <li><b>Random salt</b> - makes sure same password gives different key each time</li>
+    <li><b>HMAC</b> - detects if the file was changed or corrupted</li>
   </ul>
 
   <h2>How to run</h2>
-  <pre>
-pip install cryptography
-python pypass.py
-  </pre>
+  <pre>pip install cryptography
+python pypass.py</pre>
 
-  <h2>What the prototype can do</h2>
+  <h2>What this prototype can do</h2>
   <ul>
     <li>Create a new encrypted vault with a master password</li>
     <li>Add a password for a service</li>
@@ -121,11 +116,11 @@ python pypass.py
     <li>Change master password</li>
   </ul>
 
-  <h2>GitHub Repository</h2>
+  <h2>GitHub</h2>
   <p><a href="https://github.com/hakanay42/pypass">https://github.com/hakanay42/pypass</a></p>
 
   <footer>
-    Hakan Ay | Student ID: 4250 | Information Systems | ISMA University | 2025
+    Hakan Ay | Student ID: 4250 | Information Systems | Riga Nordic University | 2025
   </footer>
 
 </body>
